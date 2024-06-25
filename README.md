@@ -13,7 +13,11 @@ To use this code, simply run the Python script. The output will be the generated
 ## Example Question
  
 The example question used in this implementation is: "What is Tsai's energy policy?"
- 
+
+![image](https://github.com/benintw/hello_world_rag/assets/104064349/39a1bb84-9037-4153-a694-71dfed462ff0)
+
+
+
 ## Dependencies
  
  
