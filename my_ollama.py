@@ -1,10 +1,11 @@
 """
 This works.
 
+reference: https://www.youtube.com/watch?v=CPgp8MhmGVY
 """
 
 # Imports
-
+import gradio as gr
 from langchain_community.llms import Ollama
 from langchain_community.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -46,6 +47,20 @@ vectorstore = Chroma.from_documents(documents=all_splits, embedding=sentence_emb
 qachain = RetrievalQA.from_chain_type(ollama, retriever=vectorstore.as_retriever())
 
 
-# question = "When was Tsai born?"
-question = "What is Tsai's energy policy?"
-print(qachain({"query": question}))
+# Function to handle the question and return the answer
+def answer_question(question):
+    response = qachain({"query": question})
+    return response["result"]
+
+
+# Create a Gradio interface
+interface = gr.Interface(
+    fn=answer_question,
+    inputs="text",
+    outputs="text",
+    title="RAG Model QA Interface",
+    description="Ask a question about Tsai Ing-wen and get an answer from the Retrieval-Augmented Generation model.",
+)
+
+# Launch the Gradio interface
+interface.launch(share=True)
