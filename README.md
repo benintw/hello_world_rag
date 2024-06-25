@@ -1,8 +1,3 @@
-# hello_world_rag
-
-
-
-
 # RAG Implementation with Ollama and LangChain
  
 This repository contains an implementation of the Retrieval-Augmented Generation (RAG) model using Open AI's LLaMA large language model and the LangChain library.
